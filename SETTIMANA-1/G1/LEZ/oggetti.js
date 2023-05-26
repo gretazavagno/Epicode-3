@@ -1,4 +1,5 @@
-var corso;
+"use strict";
+let corso;
 corso = {
     nome: 'FS0223',
     anno: 2023,

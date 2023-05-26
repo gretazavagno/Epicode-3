@@ -1,3 +1,4 @@
+"use strict";
 var Mesi;
 (function (Mesi) {
     Mesi[Mesi["gennaio"] = 1] = "gennaio";

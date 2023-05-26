@@ -105,10 +105,11 @@ btnReset.addEventListener('click', function () {
 });
 */
 
+//Funzione che genera un numero causale compreso tra i valori dei due parametri min e max (poi verranno assegnati come 1 e 100)
 const generateRandomNumber = (min: number, max: number): number =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
-
+//FUnzione che confronta il numero estratto da un giocatore con il numero target estratto e mi dice se lo ha indovinato o no
 const checkGuess = (player: string, guess: number, target: number): void => {
     if (guess === target) {
         console.log(`${player} ha indovinato il numero!`);
@@ -117,15 +118,17 @@ const checkGuess = (player: string, guess: number, target: number): void => {
     }
 }
 
-
+//dichiaro i due giocatori
 const player1 = "Giocatore 1";
 const player2 = "Giocatore 2";
 
+//Funzione che compara le puntate dei due giocatori con il numero target estratto e dice chi si è avvicinato di più
 function compareGuesses(player1: string, guess1: number, player2: string, guess2: number, target: number): void {
     //calcoliamo differenza assoluta tra numero da indovinare (target) e tentativi dei giocatori (guess1 e guess2)
-    const diff1 = Math.abs(target - guess1); 
+    const diff1 = Math.abs(target - guess1); //math.abs mi restituisce il valore assoluto di un numero
     const diff2 = Math.abs(target - guess2);
 
+    //verifica chi è arrivato più vicino al numero target (minore è la differenza più è vicino)
     if (diff1 === diff2) {
         console.log("Entrambi i giocatori si sono avvicinati allo stesso modo al numero estratto.");
     } else if (diff1 < diff2) {
@@ -134,20 +137,21 @@ function compareGuesses(player1: string, guess1: number, player2: string, guess2
         console.log(`${player2} si è avvicinato di più al numero estratto.`);
     }
 }
-  
+
+//Funzione che mi permette di stampare tutti i valori ed esegue tutte le funzioni dichiarate prima
 function playGame(player1: string, player2: string): void {
-    const targetNumber = generateRandomNumber(1, 100); //estrae un numero tra 1 e 100
+    const targetNumber = generateRandomNumber(1, 100); //estrae un numero tra 1 e 100 e lo stampa a riga 147
     const guess1 = generateRandomNumber(1, 100); 
     const guess2 = generateRandomNumber(1, 100); 
 
-    console.log(`Numero casuale generato: ${targetNumber}`);
+    console.log(`Numero casuale generato: ${targetNumber}`); 
     console.log(`${player1} indovina il numero: ${guess1}`);
     console.log(`${player2} indovina il numero: ${guess2}`);
 
-    checkGuess(player1, guess1, targetNumber);
+    checkGuess(player1, guess1, targetNumber); //questa funzione mi dice se il giocatore ha indovinato o no il numero target
     checkGuess(player2, guess2, targetNumber);
-    compareGuesses(player1, guess1, player2, guess2, targetNumber);
+    compareGuesses(player1, guess1, player2, guess2, targetNumber); //funzione che mi dice chi si è avvicinato di più
 }
     
-playGame(player1, player2);
+playGame(player1, player2); //richiamo la funzione
   
